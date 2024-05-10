@@ -4,6 +4,7 @@ WORKDIR /app
 
 COPY . /app
 
-RUN pip install --no-cache-dir whisper
+RUN pip install -U openai-whisper
 
 CMD ["python", "main.py"]
+ ADD source dest
