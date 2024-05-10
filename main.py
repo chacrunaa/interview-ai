@@ -10,9 +10,11 @@ logger = logging.getLogger()
 warnings.simplefilter("ignore")
 
 # Загрузка модели Whisper
-model = whisper.load_model("base")  # Можно выбрать другую модель, например 'small', 'medium', 'large', или 'tiny'
-
 video_files = [f for f in os.listdir("/app/videos") if os.path.isfile(os.path.join("/app/videos", f))]
+
+
+model = whisper.load_model("base")  # Можно выбрать другую модель, например 'small', 'medium', 'large', или 'tiny'
+result = whisper.transcribe(audio=video_path)
 
 start_time = time.time()
 api_requests = 0
