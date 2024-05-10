@@ -7,6 +7,8 @@ import time
 logging.basicConfig(filename='/app/log.log', level=logging.INFO, format='%(asctime)s - %(message)s')
 logger = logging.getLogger()
 
+model = whisper.load_model("base") 
+
 warnings.simplefilter("ignore")
 
 video_files = [f for f in os.listdir("/app/videos") if os.path.isfile(os.path.join("/app/videos", f))]
@@ -17,7 +19,7 @@ api_requests = 0
 for video_file in video_files:
     video_path = f"/app/videos/{video_file}"
     
-    result = whisper.transcribe(audio=video_path)
+    result = whisper.transcribe(audio=video_path)   
     api_requests += 1
     
     text_result_path = f"/app/text/{os.path.splitext(video_file)[0]}.txt"
