@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  whisper-service:
+    image: onerahmet/openai-whisper-asr-webservice:latest
+    ports:
+      - "5000:5000"  # Предполагается, что сервис работает на порту 5000
+    volumes:
+      - /home/trans-ai/videos:/app/videos  # Монтируем папку с видео файлами
+      - ./text:/app/text  # Папка для сохранения текстовых файлов
