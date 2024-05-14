@@ -47,8 +47,17 @@
 
 # # print(result["text"]
 import whisper
+import os
+file_path = "/app/videos"
 
 model = whisper.load_model("base")
+if os.path.exists(file_path):
+    print("Файл существует, ПРОЦЕСС ЗАПУЩЕН")
+    result = model.transcribe(file_path)
+    print(result['text'])
+else:
+    print("ФАЙЛ НЕ НАЙДЕН", file_path)
+
 result = model.transcribe("/app/videos/IBS.mp4")
 
 print(f' The text in video: \n {result["text"]}')

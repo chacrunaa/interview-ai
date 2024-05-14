@@ -6,5 +6,6 @@ services:
     ports:
       - "5000:5000"  # Предполагается, что сервис работает на порту 5000
     volumes:
-      - /home/trans-ai/videos:/app/videos  # Монтируем папку с видео файлами
-      - ./text:/app/text  # Папка для сохранения текстовых файлов
+      - /home/trans-ai/videos:/app/videos 
+      - ./text:/app/text
+    command: /bin/bash -c "ls /app/videos && python main.py"
