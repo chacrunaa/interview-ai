@@ -8,4 +8,3 @@ services:
     volumes:
       - /home/trans-ai/videos:/app/videos 
       - ./text:/app/text
-    command: /bin/bash -c "ls /app/videos && python main.py"
