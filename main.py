@@ -49,4 +49,4 @@
 import whisper
 model = whisper.load_model("base")
 result = model.transcribe("/videos/")
-print(f' The text in video: \n {result["text"]}'))
+print(f' The text in video: \n {result["text"]}')
