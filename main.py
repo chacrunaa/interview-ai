@@ -45,7 +45,8 @@
 
 # # result = model.transcribe(audio="/videos/IBS.mp4")
 
-# # print(result["text"]
+# print(result["text"]
+
 import whisper
 import os
 file_path = "/app/videos/IBS.mp4"
@@ -53,10 +54,10 @@ file_path = "/app/videos/IBS.mp4"
 model = whisper.load_model("base")
 if os.path.exists(file_path):
     print("Файл существует, ПРОЦЕСС ЗАПУЩЕН")
-    result = model.transcribe(file_path)
+    result = model.transcribe(file_path, language="ru", translate=False)
     print(result['text'])
 else:
-    print("ФАЙЛ НЕ НАЙДЕН", file_path)
+    print("ФАЙЛ NE НАЙДЕН", file_path)
 
 result = model.transcribe(file_path)
 
