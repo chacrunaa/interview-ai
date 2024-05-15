@@ -57,7 +57,7 @@ if os.path.exists(file_path):
     print("Файл существует, ПРОЦЕСС ЗАПУЩЕН")
     start_time = time.time()
     api_requests = 0
-    result = model.transcribe(file_path, language="ru", translate=False)
+    result = model.transcribe(file_path, task="transcribe", language="ru", translate=False)
     print(result['text'])
     api_requests += 1
 
