@@ -16,14 +16,13 @@
 # model = whisper.load_model("base")  # Можно выбрать другую модель, например 'small', 'medium', 'large', или 'tiny'
 # result = whisper.transcribe(audio=video_path)
 
-# start_time = time.time()
-# api_requests = 0
+
 
 # for video_file in video_files:
 #     video_path = f"/app/videos/{video_file}"
     
 #     result = model.transcribe(audio=video_path)
-#     api_requests += 1
+#    
     
 #     text_result_path = f"/app/text/{os.path.splitext(video_file)[0]}.txt"
     
@@ -49,16 +48,28 @@
 
 import whisper
 import os
+import logging
+
 file_path = "/app/videos/IBS.mp4"
 
 model = whisper.load_model("base")
 if os.path.exists(file_path):
     print("Файл существует, ПРОЦЕСС ЗАПУЩЕН")
+    start_time = time.time()
+    api_requests = 0
     result = model.transcribe(file_path, language="ru", translate=False)
     print(result['text'])
+    api_requests += 1
+
 else:
     print("ФАЙЛ NE НАЙДЕН", file_path)
 
-result = model.transcribe(file_path)
+logging.basicConfig(filename='/app/log.log', level=logging.INFO, format='%(asctime)s - %(message)s')
+logger = logging.getLogger()
+end_time = time.time()
+execution_time = end_time - start_time
+
+logger.info(f"API requests: {api_requests}")
+logger.info(f"Execution time: {execution_time} seconds")
 
 print(f' The text in video: \n {result["text"]}')
