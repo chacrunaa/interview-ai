@@ -50,7 +50,7 @@ import whisper
 import os
 import logging
 
-file_path = "/app/videos/IBS.mp4"
+file_path = "/app/videos/IBS.mp3"
 
 model = whisper.load_model("base")
 if os.path.exists(file_path):
