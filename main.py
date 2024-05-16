@@ -72,4 +72,4 @@ execution_time = end_time - start_time
 logger.info(f"API requests: {api_requests}")
 logger.info(f"Execution time: {execution_time} seconds")
 
-print(f' The text in video: \n {result["text"]}')
+print(api_requests)
