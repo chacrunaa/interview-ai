@@ -45,12 +45,13 @@
 # # result = model.transcribe(audio="/videos/IBS.mp4")
 
 # print(result["text"]
+ print('main МЕЙН ру')
 
 import whisper
 import os
 import logging
 
-file_path = "/app/videos/IBS.mp3"
+file_path = "/videos/IBS.mp3"
 
 model = whisper.load_model("base")
 if os.path.exists(file_path):
@@ -64,7 +65,7 @@ if os.path.exists(file_path):
 else:
     print("ФАЙЛ NE НАЙДЕН", file_path)
 
-logging.basicConfig(filename='/app/log.log', level=logging.INFO, format='%(asctime)s - %(message)s')
+logging.basicConfig(filename='/log.log', level=logging.INFO, format='%(asctime)s - %(message)s')
 logger = logging.getLogger()
 end_time = time.time()
 execution_time = end_time - start_time
