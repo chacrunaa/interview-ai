@@ -1,76 +1,15 @@
-# # import os
-# import whisper
-# # import warnings
-# # import logging
-# # import time
+from flask import Flask
+from flask_restful import Api, Resource
 
-# # logging.basicConfig(filename='/app/log.log', level=logging.INFO, format='%(asctime)s - %(message)s')
-# # logger = logging.getLogger()
+app = Flask(__name__)
+api = Api()
 
-# # warnings.simplefilter("ignore")
+class Video(Resource):
+    def post(self):
+        return {"message":"link start and ok"}
 
-# # Загрузка модели Whisper
-# # video_files = [f for f in os.listdir("/app/videos") if os.path.isfile(os.path.join("/app/videos", f))]
+api.add_resource(Video, "/api/video")
+api.init_app(app)
 
-
-# model = whisper.load_model("base")  # Можно выбрать другую модель, например 'small', 'medium', 'large', или 'tiny'
-# result = whisper.transcribe(audio=video_path)
-
-
-
-# for video_file in video_files:
-#     video_path = f"/app/videos/{video_file}"
-    
-#     result = model.transcribe(audio=video_path)
-#    
-    
-#     text_result_path = f"/app/text/{os.path.splitext(video_file)[0]}.txt"
-    
-#     with open(text_result_path, "w") as file:
-#         file.write(result["text"])
-    
-#     os.system(f"python main.py --video {video_path}")
-
-# end_time = time.time()
-# execution_time = end_time - start_time
-
-# logger.info(f"API requests: {api_requests}")
-# logger.info(f"Execution time: {execution_time} seconds")
-# # import whisper
-# # import warnings
-# # warnings.simplefilter("ignore")
-
-# # model = whisper.load_model("base")
-
-# # result = model.transcribe(audio="/videos/IBS.mp4")
-
-# print(result["text"]
- print('main МЕЙН ру')
-
-import whisper
-import os
-import logging
-
-file_path = "/videos/IBS.mp3"
-
-model = whisper.load_model("base")
-if os.path.exists(file_path):
-    print("Файл существует, ПРОЦЕСС ЗАПУЩЕН")
-    start_time = time.time()
-    api_requests = 0
-    result = model.transcribe(file_path, task="transcribe", language="ru", translate=False)
-    print(result['text'])
-    api_requests += 1
-
-else:
-    print("ФАЙЛ NE НАЙДЕН", file_path)
-
-logging.basicConfig(filename='/log.log', level=logging.INFO, format='%(asctime)s - %(message)s')
-logger = logging.getLogger()
-end_time = time.time()
-execution_time = end_time - start_time
-
-logger.info(f"API requests: {api_requests}")
-logger.info(f"Execution time: {execution_time} seconds")
-
-print(api_requests)
+if __name__ == "__main__":
+    app.run(debug=True, port=3000, host="localhost")
