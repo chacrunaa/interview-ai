@@ -51,8 +51,8 @@ SQLAlchemy==2.0.30
 sympy==1.12.1
 tiktoken==0.7.0
 torch==2.3.0
-torchaudio==2.3.0+cpu
-torchvision==0.18.0+cpu
+torchaudio==2.3.0
+torchvision==0.18.0
 tqdm==4.66.4
 triton==2.3.0
 typing_extensions==4.12.0
