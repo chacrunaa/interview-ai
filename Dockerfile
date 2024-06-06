@@ -1,13 +1,9 @@
-FROM node:18
+FROM python:3.10-slim
+
+RUN pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+RUN pip install openai-whisper psycopg2-binary flask-sqlalchemy flask-restx flask python-dotenv
 
 WORKDIR /app
+COPY . /app
 
-COPY package.json ./
-
-RUN npm install
-
-COPY . .
-
-RUN npm run build
-
-CMD ["node", "dist/main.js"]
+CMD ["flask", "run", "--host=0.0.0.0", "--port=4001"]
