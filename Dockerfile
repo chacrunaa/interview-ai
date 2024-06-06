@@ -1,6 +1,6 @@
 FROM python:3.10-slim
 
-RUN pip install ffmpeg
+RUN apt-get update && apt-get install -y ffmpeg
 RUN pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 RUN pip install openai-whisper psycopg2-binary flask-sqlalchemy flask-restx flask python-dotenv
 
